@@ -154,7 +154,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>  </br>
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password  </label>
+                <label>Mot de passe </label>
                 <input type="password" name="password" class="form-control">
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>

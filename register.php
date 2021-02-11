@@ -2,14 +2,15 @@
 // Include config file
 require_once "config.php";
 
-// Define variables and initialize with empty values
+// Définir des variables et initialiser avec des valeurs vides
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
 
-// Processing form data when form is submitted
+// Traitement des données du formulaire lors de la soumission du formulaire
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    // Validate username
+
+// Valider le nom d'utilisateur
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
     } else{
@@ -17,13 +18,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $sql = "SELECT id FROM users WHERE username = ?";
 
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
+            // Lier des variables à l'instruction préparée en tant que paramètres
             mysqli_stmt_bind_param($stmt, "s", $param_username);
 
-            // Set parameters
+            // Définir les paramètres
             $param_username = trim($_POST["username"]);
 
-            // Attempt to execute the prepared statement
+            // Tentative d'exécuter l'instruction préparée
             if(mysqli_stmt_execute($stmt)){
                 /* store result */
                 mysqli_stmt_store_result($stmt);
@@ -61,21 +62,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    // Check input errors before inserting in database
+
+    //Vérifiez les erreurs d'entrée avant de les insérer dans la base de données
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
 
-        // Prepare an insert statement
+        // Préparer une instruction d'insertion
         $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
 
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
+            // Lier des variables à l'instruction préparée en tant que paramètres
             mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
 
-            // Set parameters
+            // Définir les paramètres
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
 
-            // Attempt to execute the prepared statement
+            //
+            //Tentative d'exécuter l'instruction préparée
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
                 header("location: connexion.php");
