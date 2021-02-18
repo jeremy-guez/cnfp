@@ -12,10 +12,6 @@
 
 <body>
 
-
-
-
-
     <div id="entete">
         <div id="focus-container" class="container">
             <div class="left-side"></div>

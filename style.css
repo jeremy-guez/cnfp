@@ -4,15 +4,12 @@
 
 .btn-primary{
     text-align: center;
+    align-items: center;
     background-color: #FFC300;
     border-radius: 300px;
     width: 5em;
     margin-left:100px;
     margin-top:10px;
-}
-.form-group{
-    margin-left:120px;
-
 }
 
 fieldset{
@@ -76,7 +73,6 @@ html, body {
     padding-bottom: 530px;
 }
 
-
 #footer {
     background-color: floralwhite;
     clip-path: polygon(80% 10%, 100% 35%, 100% 100%, 80% 100%, 50% 100%, 23% 100%, 0 100%, 0% 35%, 20% 10%);
@@ -98,7 +94,7 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-   
+
 }
 
 
@@ -141,14 +137,18 @@ p {
     color: #454343;
 }
 
-
 .wrapper {
-    position: absolute;
-    margin-left: 450px;
-    margin-top: 145px;
+    position: relative;
+    /* marge haut droite bas gauche */
+    margin: 250px 0px 0px 700px;
     width:500px;
+    height: 500px;
 }
 
+.wrapper .form{
+    background: rgba(125,14,15,0.5);
+    border: solid #FFC300;
+}
 
 .choix {
     position: absolute;
